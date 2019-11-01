@@ -6,6 +6,7 @@ function DeepLinkBuilder(){
         brandInput = document.getElementById('brand'),
         searchBookInput = document.getElementById('searchBook'),
         ctyhocnInput = document.getElementById('ctyhocn'),
+        ctyhocnCheckBox = document.getElementById('ctyhocn-checkbox'),
         result = document.getElementById('result'),
         copyButton = document.getElementById('copyText'),
         self = this;
@@ -92,8 +93,16 @@ function DeepLinkBuilder(){
     // ctyhocn section
 
     this.setCtyhocn = function(val) {
-        this._ctyhocn = val;
-        this.generateURL();
+
+        if(val.length <= 0) {
+            ctyhocnCheckBox.checked = false;
+            this._ctyhocn = "";
+            this.generateURL();
+        } else {
+            var param = ctyhocnInput.getAttribute('data-param');
+            this._ctyhocn = param + '=' + val;
+            this.generateURL();
+        }
     }
 
     this.getCtyhocn = function() {
@@ -103,7 +112,7 @@ function DeepLinkBuilder(){
     // create the URL
 
     this.generateURL = function() {
-        return result.value = this.getURL();
+        return result.value = this.getURL()
     }
     // get the URL
 
@@ -115,7 +124,6 @@ function DeepLinkBuilder(){
                this.getSearchBook() +
                this.getCtyhocn();
     }
-
 
     // all the event listeners for each input field
 
@@ -139,9 +147,12 @@ function DeepLinkBuilder(){
         this.setSearchBook(e.target.value);
     }.bind(self));
 
+
     ctyhocnInput.addEventListener('input', function(e) {
         this.setCtyhocn(e.target.value);
     }.bind(self));
+
+    
 
 }
 
