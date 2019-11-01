@@ -17,6 +17,18 @@
             display: flex;
         }
 
+        fieldset {
+            border: none;
+        }
+
+        .deeplinkParamCheckBox + .deeplinkParamValue  {
+            display: none;
+        }
+
+        .deeplinkParamCheckBox:checked + .deeplinkParamValue {
+            display: block;
+        }
+
     </style>
 </head>
 <body>
@@ -56,7 +68,13 @@
         <option value="reservation/book.htm?">Reserve</option>
         <option value="search/findhotels/index.htm?">Search</option>
     </select><br>
+
+    <fieldset id="ctyhocn-section" class="paramContainer">
+            <input type="checkbox" name="ctyhocn" id="ctyhocn-checkbox" value="ctyhocn" class="deeplinkParamCheckBox">Ctyhocn
+            <input type="text" id="ctyhocn" placeholder="ctyhocn" class="deeplinkParamValue">
+    </fieldset>
     
+
     <div id="result-container">
         <input id="result"/>
         <button id="copyText">Copy Link</button>

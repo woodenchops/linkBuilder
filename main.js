@@ -5,6 +5,7 @@ function DeepLinkBuilder(){
         localeInput = document.getElementById('locale'),
         brandInput = document.getElementById('brand'),
         searchBookInput = document.getElementById('searchBook'),
+        ctyhocnInput = document.getElementById('ctyhocn'),
         result = document.getElementById('result'),
         copyButton = document.getElementById('copyText'),
         self = this;
@@ -24,6 +25,7 @@ function DeepLinkBuilder(){
     this.copyLink = function() {
         result.select();
         document.execCommand("copy");
+        result.setSelectionRange(0, 99999); /*For mobile devices*/
     }
 
     copyButton.addEventListener('click', this.copyLink);
@@ -87,6 +89,17 @@ function DeepLinkBuilder(){
         return this.checkIfEmpty(this._searchBook);
     }
 
+    // ctyhocn section
+
+    this.setCtyhocn = function(val) {
+        this._ctyhocn = val;
+        this.generateURL();
+    }
+
+    this.getCtyhocn = function() {
+        return this.checkIfEmpty(this._ctyhocn);
+    }
+
     // create the URL
 
     this.generateURL = function() {
@@ -95,7 +108,12 @@ function DeepLinkBuilder(){
     // get the URL
 
     this.getURL = function() {
-        return this.getProtocol() + this.getEnv() + this.getLocale() +  this.getBrand() + this.getSearchBook();
+        return this.getProtocol() + 
+               this.getEnv() + 
+               this.getLocale() +  
+               this.getBrand() + 
+               this.getSearchBook() +
+               this.getCtyhocn();
     }
 
 
@@ -119,6 +137,10 @@ function DeepLinkBuilder(){
 
     searchBookInput.addEventListener('input', function(e) {
         this.setSearchBook(e.target.value);
+    }.bind(self));
+
+    ctyhocnInput.addEventListener('input', function(e) {
+        this.setCtyhocn(e.target.value);
     }.bind(self));
 
 }
