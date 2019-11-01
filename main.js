@@ -43,24 +43,24 @@ function DeepLinkBuilder(){
     // env section
 
     this.setEnv = function(val) {
-        this.env = val;
+        this._env = val;
         this.generateURL();
     }
 
     this.getEnv = function() {
-       return this.checkIfEmpty(this.env);
+       return this.checkIfEmpty(this._env);
     }
 
 
     // locale section
 
     this.setLocale = function(val) {
-        this.locale = val;
+        this._locale = val;
         this.generateURL();
     }
 
     this.getLocale = function() {
-        return this.checkIfEmpty(this.locale);
+        return this.checkIfEmpty(this._locale);
     }
 
 
@@ -79,12 +79,12 @@ function DeepLinkBuilder(){
     // Search/Book section
 
     this.setSearchBook = function(val) {
-        this.searchBook = val;
+        this._searchBook = val;
         this.generateURL();
     }
 
     this.getSearchBook = function() {
-        return this.checkIfEmpty(this.searchBook);
+        return this.checkIfEmpty(this._searchBook);
     }
 
     // create the URL
