@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Link Builder</title>
+    <style>
+    
+        #result {
+            display: block;
+            width: 600px;
+            margin-right: 10px;;
+        }
+
+        #result-container {
+            display: flex;
+        }
+
+    </style>
+</head>
+<body>
+
+    <label for="protocol"></label>
+    <select id="protocol" class="linkField">
+        <option value="https://">HTTPS</option>
+        <option value="http://">HTTP</option>
+    </select><br>
+
+    <label for="environment"></label>
+    <select id="environment" class="linkField">
+        <option value="secure3.hilton.com/">secure3</option>
+        <option value="conradhotels3.hilton.com/">conradhotels3</option>
+    </select><br>
+
+    <label for="locale"></label>
+    <select id="locale" class="linkField">
+        <option value="en/">EN</option>
+        <option value="es/">ES</option>
+        <option value="pt/">PT</option>
+    </select><br>
+
+    <label for="brand"></label>
+    <select id="brand" class="linkField">
+        <option value="hi/">HI</option>
+        <option value="ch/">CH</option>
+    </select><br>
+
+    <label for="searchBook"></label>
+    <select id="searchBook" class="linkField">
+        <option value="reservation/book.htm?">Reserve</option>
+        <option value="search/findhotels/index.htm?">Search</option>
+    </select><br>
+    
+    <div id="result-container">
+        <input id="result"/>
+        <button id="copyText">Copy Link</button>
+    </div>
+
+ <script src="main.js"></script>   
+</body>
+</html>
