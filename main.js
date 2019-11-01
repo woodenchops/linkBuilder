@@ -90,9 +90,8 @@ function DeepLinkBuilder(){
     // create the URL
 
     this.generateURL = function() {
-       return result.value = this.getProtocol() + this.getEnv() + this.getLocale() +  this.getBrand() + this.getSearchBook();
+        return result.value = this.getURL();
     }
-
     // get the URL
 
     this.getURL = function() {
