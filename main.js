@@ -86,7 +86,7 @@ function DeepLinkModel(){
 
         if(Object.entries(this._params).length > 0){
 
-            Object.entries(this._params).forEach( (val,idx) => {
+            Object.entries(this._params).forEach( function(val,idx) {
                 queryString += (idx === 0)? '?' : '&'; // build the url by starting off by adding "?" at start then "&" inbetween params
                 queryString += val[0] + '=' + val[1]; // params key/value pairs 
             });
@@ -109,6 +109,7 @@ function DeepLinkModel(){
 
 }
 
+
 function DeeplinkUI() {
 
     var protocolInput = document.getElementById('protocol'),
@@ -120,11 +121,21 @@ function DeeplinkUI() {
     ctyhocnCheckBox = document.getElementById('ctyhocn-checkbox'),
     specPlanInput = document.getElementById('spec_plan'),
     specPlanCheckBox = document.getElementById('spec_plan-checkbox'),
+    offerIdInput = document.getElementById('offerid'),
+    offerIdCheckBox = document.getElementById('offerid-checkbox'),
     result = document.getElementById('result'),
     copyButton = document.getElementById('copyText'),
+    copyNotification = document.getElementById('copy-notification'),
     self = this;
 
     this.deeplinkModel = new DeepLinkModel();
+
+    this.copyNotificationFunc = function() {
+        copyNotification.classList.add('show');
+        setTimeout(function() {
+            copyNotification.classList.remove('show');
+        }, 1000);
+    }
 
     // add button to allow user to copy link
 
@@ -132,7 +143,8 @@ function DeeplinkUI() {
         result.select();
         document.execCommand("copy");
         result.setSelectionRange(0, 99999); /*For mobile devices*/
-    }
+        this.copyNotificationFunc();
+    }.bind(self);
 
     copyButton.addEventListener('click', this.copyLink);
 
@@ -196,6 +208,21 @@ function DeeplinkUI() {
 
     specPlanInput.addEventListener('input', function(e) {
         this.deeplinkModel.setParam('spec_plan',e.target.value);
+        this.generateURL();
+    }.bind(self));
+
+    // offer ID
+
+    offerIdCheckBox.addEventListener('input', function(e) {
+        if(!offerIdCheckBox.checked) {
+            offerIdInput.value = '';
+            this.deeplinkModel.removeParam('offerId');
+            this.generateURL();
+        }
+    }.bind(self));
+
+    offerIdInput.addEventListener('input', function(e) {
+        this.deeplinkModel.setParam('offerId',e.target.value);
         this.generateURL();
     }.bind(self));
 

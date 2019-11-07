@@ -9,7 +9,7 @@
     
         #result {
             display: block;
-            width: 600px;
+            width: 100%;
             margin-right: 10px;;
         }
 
@@ -29,9 +29,38 @@
             display: block;
         }
 
+        #copy-notification {
+            background-color: #5cd882;
+            color: #fff;
+            padding: 0;
+            text-align: center;
+            max-height: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            transition: 1s ease-in-out;
+            overflow: hidden;
+        }
+
+        #copy-notification.show {
+            padding: 10px 0px;
+            max-height: 100px;
+        }
+
+        #copy-notification p {
+            font-size: 18px;
+            margin: 0;
+            font-family: sans-serif;
+        }
+
     </style>
 </head>
 <body>
+
+    <div id="copy-notification">
+        <p>Link has been copied!</p>
+    </div>
 
     <!-- <label for="protocol"></label>
     <select id="protocol" class="linkField">
@@ -77,6 +106,12 @@
     <fieldset id="spec_plan-section" class="paramContainer">
         <input type="checkbox" name="spec_plan" id="spec_plan-checkbox" value="spec_plan" class="deeplinkParamCheckBox">Spec Plan
         <input type="text" id="spec_plan" placeholder="spec_plan" data-param="spec_plan" class="deeplinkParamValue">
+    </fieldset>
+
+
+    <fieldset id="offerid-section" class="paramContainer">
+        <input type="checkbox" name="offerid" id="offerid-checkbox" value="offerid" class="deeplinkParamCheckBox">Offer ID
+        <input type="text" id="offerid" placeholder="offerid" data-param="offerid" class="deeplinkParamValue">
     </fieldset>
     
 
