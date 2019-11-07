@@ -18,13 +18,13 @@ function DeepLinkModel(){
 
     // protocol section
 
-    this.setProtocol = function(val) {
-        this._protocolValue = val;
-    }
+    // this.setProtocol = function(val) {
+    //     this._protocolValue = val;
+    // }
 
-    this.getProtocol = function() {
-        return this.checkIfEmpty(this._protocolValue);
-    }
+    // this.getProtocol = function() {
+    //     return this.checkIfEmpty(this._protocolValue);
+    // }
 
     // env section
 
@@ -99,7 +99,7 @@ function DeepLinkModel(){
     // get the URL
 
     this.getURL = function() {
-        return this.getProtocol() + 
+        return 'https://' + 
                this.getEnv() + 
                this.getLocale() +  
                this.getBrand() + 
@@ -142,10 +142,10 @@ function DeeplinkUI() {
 
     // all the event listeners for each input field
 
-    protocolInput.addEventListener('input', function(e) {
-        this.deeplinkModel.setProtocol(e.target.value);
-        this.generateURL();
-    }.bind(self));
+    // protocolInput.addEventListener('input', function(e) {
+    //     this.deeplinkModel.setProtocol(e.target.value);
+    //     this.generateURL();
+    // }.bind(self));
 
     environmentInput.addEventListener('input', function(e) {
         this.deeplinkModel.setEnv(e.target.value);
