@@ -1,3 +1,9 @@
+/*
+DeepLinkModel => builds the link - getters and setters
+DeeplinkUI => builds the link via a form 
+*/
+
+
 function DeepLinkModel(){
 
     // params obj
@@ -59,6 +65,8 @@ function DeepLinkModel(){
     this.getSearchBook = function() {
         return this.checkIfEmpty(this._searchBook);
     }
+
+    // params --------------------------------------
 
     this.setParam = function(param,val){
         this._params[param] = val;
@@ -159,6 +167,8 @@ function DeeplinkUI() {
         this.generateURL();
     }.bind(self));
 
+    // set params ----------------------------------------
+
     // ctyhocn
 
     ctyhocnCheckBox.addEventListener('input', function(e) {
@@ -170,8 +180,7 @@ function DeeplinkUI() {
     }.bind(self));
     
     ctyhocnInput.addEventListener('input', function(e) {
-        var param = ctyhocnInput.getAttribute('data-param');
-        this.deeplinkModel.setParam(param,e.target.value);
+        this.deeplinkModel.setParam('ctyhocn',e.target.value);
         this.generateURL();
     }.bind(self));
 
@@ -186,8 +195,7 @@ function DeeplinkUI() {
     }.bind(self));
 
     specPlanInput.addEventListener('input', function(e) {
-        var param = specPlanInput.getAttribute('data-param');
-        this.deeplinkModel.setParam(param,e.target.value);
+        this.deeplinkModel.setParam('spec_plan',e.target.value);
         this.generateURL();
     }.bind(self));
 
