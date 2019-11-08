@@ -123,21 +123,15 @@ function DeeplinkUI() {
 
     this.deeplinkModel = new DeepLinkModel();
 
-    this.copyNotificationFunc = function() {
-        
-        copyNotification.classList.add('show');
-        setTimeout(function() {
-            copyNotification.classList.remove('show');
-        }, 1500);
-    }
+    this.copyLinkNotification = new CopyLinkNotification();
 
-    // add button to allow user to copy link
+        // add button to allow user to copy link
 
     this.copyLink = function() {
         result.select();
         document.execCommand("copy");
         result.setSelectionRange(0, 99999); /*For mobile devices*/
-        this.copyNotificationFunc();
+        this.copyLinkNotification.display();
     }.bind(self);
 
     copyButton.addEventListener('click', this.copyLink);
@@ -216,11 +210,24 @@ function DeeplinkUI() {
     }.bind(self));
 
     this.init = function() {
-        console.log('class init');
+        console.log('up and running!!');
     }
 
     this.init();
 
 }
+
+function CopyLinkNotification() {
+
+    var copyNotification = document.getElementById('copy-notification');
+
+    this.display = function() {
+
+        copyNotification.classList.add('show');
+        setTimeout(function() {
+            copyNotification.classList.remove('show');
+        }, 1500);
+    }
+} 
 
 var formUI = new DeeplinkUI();
