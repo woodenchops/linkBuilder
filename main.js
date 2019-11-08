@@ -16,16 +16,6 @@ function DeepLinkModel(){
        return (field) ? field : '';
     }
 
-    // protocol section
-
-    // this.setProtocol = function(val) {
-    //     this._protocolValue = val;
-    // }
-
-    // this.getProtocol = function() {
-    //     return this.checkIfEmpty(this._protocolValue);
-    // }
-
     // env section
 
     this.setEnv = function(val) {
@@ -107,6 +97,10 @@ function DeepLinkModel(){
                this.buildParamString();
     }
 
+    this.getParams = function() {
+        return this._params;
+    }
+
 }
 
 
@@ -127,6 +121,7 @@ function DeeplinkUI() {
     copyButton = document.getElementById('copyText'),
     copyNotification = document.getElementById('copy-notification'),
     self = this;
+
 
     this.deeplinkModel = new DeepLinkModel();
 
@@ -153,11 +148,6 @@ function DeeplinkUI() {
     }
 
     // all the event listeners for each input field
-
-    // protocolInput.addEventListener('input', function(e) {
-    //     this.deeplinkModel.setProtocol(e.target.value);
-    //     this.generateURL();
-    // }.bind(self));
 
     environmentInput.addEventListener('input', function(e) {
         this.deeplinkModel.setEnv(e.target.value);
@@ -225,6 +215,12 @@ function DeeplinkUI() {
         this.deeplinkModel.setParam('offerId',e.target.value);
         this.generateURL();
     }.bind(self));
+
+    this.init = function() {
+        console.log('class init');
+    }
+
+    this.init();
 
 }
 

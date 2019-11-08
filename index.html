@@ -39,7 +39,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            transition: 1s ease-in-out;
+            transition: 1s ease;
             overflow: hidden;
         }
 
@@ -52,6 +52,11 @@
             font-size: 18px;
             margin: 0;
             font-family: sans-serif;
+        }
+
+        .paramContainer {
+            display: flex;
+            flex-wrap: wrap;
         }
 
     </style>
@@ -98,22 +103,25 @@
         <option value="search/findhotels/index.htm">Search</option>
     </select><br>
 
-    <fieldset id="ctyhocn-section" class="paramContainer">
-            <input type="checkbox" name="ctyhocn" id="ctyhocn-checkbox" value="ctyhocn" class="deeplinkParamCheckBox">Ctyhocn
-            <input type="text" id="ctyhocn" placeholder="ctyhocn" data-param="ctyhocn" class="deeplinkParamValue">
-    </fieldset>
+    <div class="paramContainer">
 
-    <fieldset id="spec_plan-section" class="paramContainer">
-        <input type="checkbox" name="spec_plan" id="spec_plan-checkbox" value="spec_plan" class="deeplinkParamCheckBox">Spec Plan
-        <input type="text" id="spec_plan" placeholder="spec_plan" data-param="spec_plan" class="deeplinkParamValue">
-    </fieldset>
+        <fieldset id="ctyhocn-section" class="paramContainer">
+                <input type="checkbox" name="ctyhocn" id="ctyhocn-checkbox" value="ctyhocn" class="deeplinkParamCheckBox">Ctyhocn
+                <input type="text" id="ctyhocn" placeholder="ctyhocn" data-param="ctyhocn" class="deeplinkParamValue">
+        </fieldset>
+
+        <fieldset id="spec_plan-section" class="paramContainer">
+            <input type="checkbox" name="spec_plan" id="spec_plan-checkbox" value="spec_plan" class="deeplinkParamCheckBox">Spec Plan
+            <input type="text" id="spec_plan" placeholder="spec_plan" data-param="spec_plan" class="deeplinkParamValue">
+        </fieldset>
 
 
-    <fieldset id="offerid-section" class="paramContainer">
-        <input type="checkbox" name="offerid" id="offerid-checkbox" value="offerid" class="deeplinkParamCheckBox">Offer ID
-        <input type="text" id="offerid" placeholder="offerid" data-param="offerid" class="deeplinkParamValue">
-    </fieldset>
+        <fieldset id="offerid-section" class="paramContainer" data-param="offerid">
+            <input type="checkbox" name="offerid" id="offerid-checkbox" value="offerid" class="deeplinkParamCheckBox">Offer ID
+            <input type="text" id="offerid" placeholder="offerid" data-param="offerid" class="deeplinkParamValue">
+        </fieldset>
     
+    </div>
 
     <div id="result-container">
         <input id="result"/>
