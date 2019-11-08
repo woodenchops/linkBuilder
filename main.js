@@ -106,8 +106,7 @@ function DeepLinkModel(){
 
 function DeeplinkUI() {
 
-    var protocolInput = document.getElementById('protocol'),
-    environmentInput = document.getElementById('environment'),
+    var environmentInput = document.getElementById('environment'),
     localeInput = document.getElementById('locale'),
     brandInput = document.getElementById('brand'),
     searchBookInput = document.getElementById('searchBook'),
@@ -122,14 +121,14 @@ function DeeplinkUI() {
     copyNotification = document.getElementById('copy-notification'),
     self = this;
 
-
     this.deeplinkModel = new DeepLinkModel();
 
     this.copyNotificationFunc = function() {
+        
         copyNotification.classList.add('show');
         setTimeout(function() {
             copyNotification.classList.remove('show');
-        }, 1000);
+        }, 1500);
     }
 
     // add button to allow user to copy link
