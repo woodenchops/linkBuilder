@@ -39,7 +39,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            transition: 1.5s ease;
+            transition: 1s ease;
             overflow: hidden;
         }
 
@@ -63,16 +63,9 @@
 </head>
 <body>
 
-    <div id="copy-notification">
+    <div id="copy-notification" aria-label="link has been copied" aria-live="assertive">
         <p>Link has been copied!</p>
     </div>
-
-    <!-- <label for="protocol"></label>
-    <select id="protocol" class="linkField">
-        <option disabled selected value> -- select protocol -- </option>
-        <option value="https://">HTTPS</option>
-        <option value="http://">HTTP</option>
-    </select><br> -->
 
     <label for="environment"></label>
     <select id="environment" class="linkField">
@@ -102,6 +95,8 @@
         <option value="reservation/book.htm">Reserve</option>
         <option value="search/findhotels/index.htm">Search</option>
     </select><br>
+
+    <!-- params -->
 
     <div class="paramContainer">
 

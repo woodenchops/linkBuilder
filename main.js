@@ -225,8 +225,16 @@ function CopyLinkNotification() {
 
         copyNotification.classList.add('show');
         setTimeout(function() {
+            copyNotification.setAttribute('tabindex', '0');
+            copyNotification.focus();
+        });
+        setTimeout(function() {
             copyNotification.classList.remove('show');
-        }, 1500);
+        }, 1000);
+
+        setTimeout(function() {
+            copyNotification.removeAttribute('tabindex');
+        }, 2000)
     }
 } 
 
