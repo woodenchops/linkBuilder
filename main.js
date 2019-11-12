@@ -125,6 +125,14 @@ function DeeplinkUI() {
 
     this.copyLinkNotification = new CopyLinkNotification();
 
+    this.fieldHasValue = function(input, checkbox, param) {
+        if(input.value.length <= 0) {
+            checkbox.checked = false;
+            this.deeplinkModel.removeParam(param);
+            this.generateURL();
+        }
+    }
+
         // add button to allow user to copy link
 
     this.copyLink = function() {
@@ -177,6 +185,7 @@ function DeeplinkUI() {
     ctyhocnInput.addEventListener('input', function(e) {
         this.deeplinkModel.setParam('ctyhocn',e.target.value);
         this.generateURL();
+        this.fieldHasValue(ctyhocnInput, ctyhocnCheckBox, 'ctyhocn');
     }.bind(self));
 
     // spec plan
@@ -192,6 +201,7 @@ function DeeplinkUI() {
     specPlanInput.addEventListener('input', function(e) {
         this.deeplinkModel.setParam('spec_plan',e.target.value);
         this.generateURL();
+        this.fieldHasValue(specPlanInput, specPlanCheckBox, 'spec_plan');
     }.bind(self));
 
     // offer ID
@@ -207,6 +217,7 @@ function DeeplinkUI() {
     offerIdInput.addEventListener('input', function(e) {
         this.deeplinkModel.setParam('offerId',e.target.value);
         this.generateURL();
+        this.fieldHasValue(offerIdInput, offerIdCheckBox, 'offerId');
     }.bind(self));
 
     this.init = function() {
