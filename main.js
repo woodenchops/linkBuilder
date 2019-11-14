@@ -116,6 +116,8 @@ function DeeplinkUI() {
     specPlanCheckBox = document.getElementById('spec_plan-checkbox'),
     offerIdInput = document.getElementById('offerid'),
     offerIdCheckBox = document.getElementById('offerid-checkbox'),
+    hotelInput = document.getElementById('hotel'),
+    hotelCheckBox = document.getElementById('hotel-checkbox'),
     result = document.getElementById('result'),
     copyButton = document.getElementById('copyText'),
     self = this;
@@ -218,6 +220,25 @@ function DeeplinkUI() {
         this.generateURL();
         this.fieldHasValue(offerIdInput, offerIdCheckBox, 'offerId');
     }.bind(self));
+
+    // Hotel
+
+    hotelCheckBox.addEventListener('input', function(e) {
+        if(!hotelCheckBox.checked) {
+            hotelInput.value = '';
+            this.deeplinkModel.removeParam('hotel');
+            this.generateURL();
+        }
+    }.bind(self));
+
+    hotelInput.addEventListener('input', function(e) {
+        this.deeplinkModel.setParam('hotel',e.target.value);
+        this.generateURL();
+        this.fieldHasValue(hotelInput, hotelCheckBox, 'hotel');
+    }.bind(self));
+
+
+    // init section 
 
     this.init = function() {
         console.log('up and running!!');
