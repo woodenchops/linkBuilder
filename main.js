@@ -118,7 +118,6 @@ function DeeplinkUI() {
     offerIdCheckBox = document.getElementById('offerid-checkbox'),
     result = document.getElementById('result'),
     copyButton = document.getElementById('copyText'),
-    copyNotification = document.getElementById('copy-notification'),
     self = this;
 
     this.deeplinkModel = new DeepLinkModel();
