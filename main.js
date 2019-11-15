@@ -105,26 +105,6 @@ function DeepLinkModel(){
 
 
 var View = function DeeplinkUI() {
-
-    var parentContainer = document.getElementById('paramContainer');
-
-    this.init = function() {
-        
-        // add param input fields
-
-        this.ctyhocn = new AddParamInput('ctyhocn', parentContainer, 'Ctyhocn', this);
-        this.spec_plan = new AddParamInput('spec_plan', parentContainer, 'Spec_Plan', this);
-        this.offerId = new AddParamInput('offerid', parentContainer, 'Offer ID', this);
-        this.hotel = new AddParamInput('hotel', parentContainer, 'Hotel', this);
-        this.tid = new AddParamInput('tid', parentContainer, 'TID', this);
-        this.spec_plan_desc = new AddParamInput('spec-plan-desc', parentContainer, 'Spec_Plan_Desc', this);
-        this.enhance_code = new AddParamInput('enhance_code', parentContainer, 'Enhance Code', this);
-        this.enhance_code_desc = new AddParamInput('enhance_code_desc', parentContainer, 'Enhance Code Desc', this);
-    }
-
-    // init section 
-
-    this.init();
         
     var environmentInput = document.getElementById('environment'),
     localeInput = document.getElementById('locale'),
@@ -132,6 +112,7 @@ var View = function DeeplinkUI() {
     searchBookInput = document.getElementById('searchBook'),
     result = document.getElementById('result'),
     copyButton = document.getElementById('copyText'),
+    parentContainer = document.getElementById('paramContainer');
     self = this;
 
     this.deeplinkModel = new DeepLinkModel();
@@ -183,6 +164,26 @@ var View = function DeeplinkUI() {
         this.generateURL();
     }.bind(self));
 
+    // params
+
+    this.init = function() {
+        
+        // add param input fields
+
+        this.ctyhocn = new AddParamInput('ctyhocn', parentContainer, 'Ctyhocn', this);
+        this.spec_plan = new AddParamInput('spec_plan', parentContainer, 'Spec_Plan', this);
+        this.offerId = new AddParamInput('offerid', parentContainer, 'Offer ID', this);
+        this.hotel = new AddParamInput('hotel', parentContainer, 'Hotel', this);
+        this.tid = new AddParamInput('tid', parentContainer, 'TID', this);
+        this.spec_plan_desc = new AddParamInput('spec-plan-desc', parentContainer, 'Spec_Plan_Desc', this);
+        this.enhance_code = new AddParamInput('enhance_code', parentContainer, 'Enhance Code', this);
+        this.enhance_code_desc = new AddParamInput('enhance_code_desc', parentContainer, 'Enhance Code Desc', this);
+    }
+
+    // init section 
+
+    this.init();
+
 }
 
 // create copy notification
@@ -219,7 +220,6 @@ function AddParamInput(param, parent, label,view) {
     // create Fieldset Element
 
     this.fieldSet = document.createElement('FIELDSET');
-    this.fieldSet.classList.add('field');
     this.fieldSet.innerHTML =  this._checkBox + this._inputFieldValue;
 
     parent.appendChild(this.fieldSet);
