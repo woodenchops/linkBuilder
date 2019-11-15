@@ -112,7 +112,8 @@ var View = function DeeplinkUI() {
     searchBookInput = document.getElementById('searchBook'),
     result = document.getElementById('result'),
     copyButton = document.getElementById('copyText'),
-    parentContainer = document.getElementById('paramContainer');
+    paramparentContainer = document.getElementById('paramContainer'),
+    dropdownParentContainer = document.getElementById('dropdownContainer')
     self = this;
 
     this.deeplinkModel = new DeepLinkModel();
@@ -144,40 +145,72 @@ var View = function DeeplinkUI() {
 
     // all the event listeners for each input field
 
-    environmentInput.addEventListener('input', function(e) {
-        this.deeplinkModel.setEnv(e.target.value);
-        this.generateURL();
-    }.bind(self));
+    // environmentInput.addEventListener('input', function(e) {
+    //     this.deeplinkModel.setEnv(e.target.value);
+    //     this.generateURL();
+    // }.bind(self));
 
-    localeInput.addEventListener('input', function(e) {
-        this.deeplinkModel.setLocale(e.target.value);
-        this.generateURL();
-    }.bind(self));
+    // localeInput.addEventListener('input', function(e) {
+    //     this.deeplinkModel.setLocale(e.target.value);
+    //     this.generateURL();
+    // }.bind(self));
 
-    brandInput.addEventListener('input', function(e) {
-        this.deeplinkModel.setBrand(e.target.value);
-        this.generateURL();
-    }.bind(self));
+    // brandInput.addEventListener('input', function(e) {
+    //     this.deeplinkModel.setBrand(e.target.value);
+    //     this.generateURL();
+    // }.bind(self));
 
-    searchBookInput.addEventListener('input', function(e) {
-        this.deeplinkModel.setSearchBook(e.target.value);
-        this.generateURL();
-    }.bind(self));
+    // searchBookInput.addEventListener('input', function(e) {
+    //     this.deeplinkModel.setSearchBook(e.target.value);
+    //     this.generateURL();
+    // }.bind(self));
 
     // params
 
     this.init = function() {
-        
+
+        // add dropdowns
+
+        this.envDrop = new AddDropDown(
+            dropdownParentContainer, 
+            'select an environment', 
+            {
+                'hjhjh': 'Hilton', 
+                'jhvjhv': 'Bob',
+            });
+
+        this.localeDrop = new AddDropDown(
+            dropdownParentContainer, 
+            'select a locale', 
+            {
+                'hjhjh': 'Hilton', 
+                'jhvjhv': 'Bob',
+            });
+
+        this.brandDrop = new AddDropDown(
+            dropdownParentContainer, 
+            'select a locale', 
+            {
+                'hjhjh': 'Hilton', 
+                'jhvjhv': 'Bob',
+            });
+    
         // add param input fields
 
-        this.ctyhocn = new AddParamInput('ctyhocn', parentContainer, 'Ctyhocn', this);
-        this.spec_plan = new AddParamInput('spec_plan', parentContainer, 'Spec_Plan', this);
-        this.offerId = new AddParamInput('offerid', parentContainer, 'Offer ID', this);
-        this.hotel = new AddParamInput('hotel', parentContainer, 'Hotel', this);
-        this.tid = new AddParamInput('tid', parentContainer, 'TID', this);
-        this.spec_plan_desc = new AddParamInput('spec-plan-desc', parentContainer, 'Spec_Plan_Desc', this);
-        this.enhance_code = new AddParamInput('enhance_code', parentContainer, 'Enhance Code', this);
-        this.enhance_code_desc = new AddParamInput('enhance_code_desc', parentContainer, 'Enhance Code Desc', this);
+        this.ctyhocn = new AddParamInput('ctyhocn', paramparentContainer, 'Ctyhocn', this, 'text');
+        this.spec_plan = new AddParamInput('spec_plan', paramparentContainer, 'Spec_Plan', this, 'text');
+        this.offerId = new AddParamInput('offerid', paramparentContainer, 'Offer ID', this, 'text');
+        this.hotel = new AddParamInput('hotel', paramparentContainer, 'Hotel', this, 'text');
+        this.tid = new AddParamInput('tid', paramparentContainer, 'TID', this, 'text');
+        this.spec_plan_desc = new AddParamInput('spec-plan-desc', paramparentContainer, 'Spec_Plan_Desc', this, 'text');
+        this.enhance_code = new AddParamInput('enhance_code', paramparentContainer, 'Enhance Code', this, 'text');
+        this.enhance_code_desc = new AddParamInput('enhance_code_desc', paramparentContainer, 'Enhance Code Desc', this, 'text');
+        this.rooms = new AddParamInput('rooms', paramparentContainer, 'Rooms', this, 'number');
+        this.adults = new AddParamInput('adults', paramparentContainer, 'Adults', this, 'number');
+        this.children = new AddParamInput('children', paramparentContainer, 'Children', this, 'number');
+        this.pnd = new AddParamInput('pnd', paramparentContainer, 'PND', this, 'text');
+        this.arrival = new AddParamInput('arrival', paramparentContainer, 'Arrival', this, 'date');
+        this.departure = new AddParamInput('departure', paramparentContainer, 'Departure', this, 'date');
     }
 
     // init section 
@@ -210,12 +243,12 @@ function CopyLinkNotification() {
 
 // create input for param
 
-function AddParamInput(param, parent, label,view) {
+function AddParamInput(param, parent, label,view, type) {
     this._param = param;
     this._parent = parent;
     this._label = label;
     this._checkBox = '<input type="checkbox" name="'+ this._param  +'" id="'+ this._param +'-checkbox" value="' + this._param  +'" class="deeplinkParamCheckBox">' + this._label;
-    this._inputFieldValue = '<input type="text" id="'+ this._param +'-inputField" placeholder="'+ this._param +'" data-param="'+ this._param +'" class="deeplinkParamValue">';
+    this._inputFieldValue = '<input type="'+ type +'" id="'+ this._param +'-inputField" placeholder="'+ this._param +'" data-param="'+ this._param +'" class="deeplinkParamValue">';
 
     // create Fieldset Element
 
@@ -247,6 +280,21 @@ function AddParamInput(param, parent, label,view) {
     }.bind(this));
                         
 
+}
+
+function AddDropDown(parent, label, props) {
+
+    var select = document.createElement('SELECT');
+    select.innerHTML = '<option disabled selected value> -- '+ label +' -- </option>';
+
+        if(Object.entries(props).length > 0){
+
+            Object.entries(props).forEach( function(val) {
+                select.innerHTML += '<option value="'+ val[0] +'">'+ val[1]; +'</option>';
+            });
+        }
+
+        parent.appendChild(select);
 }
 
 var formUI = new View();

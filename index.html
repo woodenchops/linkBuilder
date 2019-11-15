@@ -57,7 +57,12 @@
         .paramContainer {
             display: flex;
             flex-wrap: wrap;
-            max-width: 600px;
+            max-width: 800px;
+        }
+
+        select {
+            display: block;
+            margin: 10px 0;
         }
 
     </style>
@@ -68,7 +73,9 @@
         <p>Link has been copied!</p>
     </div>
 
-    <label for="environment"></label>
+    <div id="dropdownContainer">
+
+    <!-- <label for="environment"></label>
     <select id="environment" class="linkField">
         <option disabled selected value> -- select an environment -- </option>
         <option value="www3.hilton.com/">Hilton</option>
@@ -112,42 +119,14 @@
         <option disabled selected value> -- select search or book -- </option>
         <option value="reservation/book.htm">Reserve</option>
         <option value="search/findhotels/index.htm">Search</option>
-    </select><br>
+    </select><br> -->
+
+</div>
 
     <!-- params -->
 
     <div class="paramContainer" id="paramContainer">
 
-        <!-- <fieldset id="ctyhocn-section" class="paramContainer">
-                <input type="checkbox" name="ctyhocn" id="ctyhocn-checkbox" value="ctyhocn" class="deeplinkParamCheckBox">Ctyhocn
-                <input type="text" id="ctyhocn" placeholder="ctyhocn" data-param="ctyhocn" class="deeplinkParamValue">
-        </fieldset>
-
-        <fieldset id="spec_plan-section" class="paramContainer">
-            <input type="checkbox" name="spec_plan" id="spec_plan-checkbox" value="spec_plan" class="deeplinkParamCheckBox">Spec Plan
-            <input type="text" id="spec_plan" placeholder="spec_plan" data-param="spec_plan" class="deeplinkParamValue">
-        </fieldset>
-
-
-        <fieldset id="offerid-section" class="paramContainer" data-param="offerid">
-            <input type="checkbox" name="offerid" id="offerid-checkbox" value="offerid" class="deeplinkParamCheckBox">Offer ID
-            <input type="text" id="offerid" placeholder="offerid" data-param="offerid" class="deeplinkParamValue">
-        </fieldset>
-
-        <fieldset id="hotel-section" class="paramContainer" data-param="hotel">
-            <input type="checkbox" name="hotel" id="hotel-checkbox" value="hotel" class="deeplinkParamCheckBox">Hotel
-            <input type="text" id="hotel" placeholder="hotel" data-param="hotel" class="deeplinkParamValue">
-        </fieldset>
-
-        <fieldset id="tid-section" class="paramContainer" data-param="tid">
-            <input type="checkbox" name="tid" id="tid-checkbox" value="tid" class="deeplinkParamCheckBox">TID
-            <input type="text" id="tid" placeholder="tid" data-param="tid" class="deeplinkParamValue">
-        </fieldset>
-
-        <fieldset id="spec-plan-desc-section" class="paramContainer" data-param="spec-plan-desc">
-            <input type="checkbox" name="spec-plan-desc" id="spec-plan-desc-checkbox" value="spec-plan-desc" class="deeplinkParamCheckBox">Spec Plan Desc
-            <input type="text" id="spec-plan-desc" placeholder="spec-plan-desc" data-param="spec-plan-desc" class="deeplinkParamValue">
-        </fieldset> -->
     
     </div>
 
