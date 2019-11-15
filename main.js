@@ -104,42 +104,32 @@ function DeepLinkModel(){
 }
 
 
-function DeeplinkUI() {
+var View = function DeeplinkUI() {
 
     var parentContainer = document.getElementById('paramContainer');
 
     this.init = function() {
-        console.log('up and running!!');
         
-        this.ctyhocn = new AddParamInput('ctyhocn', parentContainer, 'Ctyhocn');
-        this.spec_plan = new AddParamInput('spec_plan', parentContainer, 'Spec_Plan');
-        this.offerId = new AddParamInput('offerid', parentContainer, 'Offer ID');
-        this.hotel = new AddParamInput('hotel', parentContainer, 'Hotel');
-        this.tid = new AddParamInput('tid', parentContainer, 'TID');
-        this.spec_plan_desc = new AddParamInput('spec-plan-desc', parentContainer, 'Spec_Plan_Desc');
+        // add param input fields
+
+        this.ctyhocn = new AddParamInput('ctyhocn', parentContainer, 'Ctyhocn', this);
+        this.spec_plan = new AddParamInput('spec_plan', parentContainer, 'Spec_Plan', this);
+        this.offerId = new AddParamInput('offerid', parentContainer, 'Offer ID', this);
+        this.hotel = new AddParamInput('hotel', parentContainer, 'Hotel', this);
+        this.tid = new AddParamInput('tid', parentContainer, 'TID', this);
+        this.spec_plan_desc = new AddParamInput('spec-plan-desc', parentContainer, 'Spec_Plan_Desc', this);
+        this.enhance_code = new AddParamInput('enhance_code', parentContainer, 'Enhance Code', this);
+        this.enhance_code_desc = new AddParamInput('enhance_code_desc', parentContainer, 'Enhance Code Desc', this);
     }
 
     // init section 
 
     this.init();
-
-
+        
     var environmentInput = document.getElementById('environment'),
     localeInput = document.getElementById('locale'),
     brandInput = document.getElementById('brand'),
     searchBookInput = document.getElementById('searchBook'),
-    ctyhocnInput = document.getElementById('ctyhocn'),
-    ctyhocnCheckBox = document.getElementById('ctyhocn-checkbox'),
-    specPlanInput = document.getElementById('spec_plan'),
-    specPlanCheckBox = document.getElementById('spec_plan-checkbox'),
-    offerIdInput = document.getElementById('offerid'),
-    offerIdCheckBox = document.getElementById('offerid-checkbox'),
-    hotelInput = document.getElementById('hotel'),
-    hotelCheckBox = document.getElementById('hotel-checkbox'),
-    tidInput = document.getElementById('tid'),
-    tidCheckBox = document.getElementById('tid-checkbox'),
-    specPlanDescInput = document.getElementById('spec-plan-desc'),
-    specPlanDescCheckBox = document.getElementById('spec-plan-desc-checkbox'),
     result = document.getElementById('result'),
     copyButton = document.getElementById('copyText'),
     self = this;
@@ -193,105 +183,6 @@ function DeeplinkUI() {
         this.generateURL();
     }.bind(self));
 
-    // // set params ----------------------------------------
-
-    // // ctyhocn
-
-    ctyhocnCheckBox.addEventListener('input', function(e) {
-        if(!ctyhocnCheckBox.checked) {
-            ctyhocnInput.value = '';
-            this.deeplinkModel.removeParam('ctyhocn');
-            this.generateURL();
-        }
-    }.bind(self));
-    
-    ctyhocnInput.addEventListener('input', function(e) {
-        this.deeplinkModel.setParam('ctyhocn',e.target.value);
-        this.generateURL();
-        this.fieldHasValue(ctyhocnInput, ctyhocnCheckBox, 'ctyhocn');
-    }.bind(self));
-
-    // // spec plan
-
-    specPlanCheckBox.addEventListener('input', function(e) {
-        if(!specPlanCheckBox.checked) {
-            specPlanInput.value = '';
-            this.deeplinkModel.removeParam('spec_plan');
-            this.generateURL();
-        }
-    }.bind(self));
-
-    specPlanInput.addEventListener('input', function(e) {
-        this.deeplinkModel.setParam('spec_plan',e.target.value);
-        this.generateURL();
-        this.fieldHasValue(specPlanInput, specPlanCheckBox, 'spec_plan');
-    }.bind(self));
-
-    // // offer ID
-
-    offerIdCheckBox.addEventListener('input', function(e) {
-        if(!offerIdCheckBox.checked) {
-            offerIdInput.value = '';
-            this.deeplinkModel.removeParam('offerId');
-            this.generateURL();
-        }
-    }.bind(self));
-
-    offerIdInput.addEventListener('input', function(e) {
-        this.deeplinkModel.setParam('offerId',e.target.value);
-        this.generateURL();
-        this.fieldHasValue(offerIdInput, offerIdCheckBox, 'offerId');
-    }.bind(self));
-
-    // // Hotel
-
-    hotelCheckBox.addEventListener('input', function(e) {
-        if(!hotelCheckBox.checked) {
-            hotelInput.value = '';
-            this.deeplinkModel.removeParam('hotel');
-            this.generateURL();
-        }
-    }.bind(self));
-
-    hotelInput.addEventListener('input', function(e) {
-        this.deeplinkModel.setParam('hotel',e.target.value);
-        this.generateURL();
-        this.fieldHasValue(hotelInput, hotelCheckBox, 'hotel');
-    }.bind(self));
-
-    // //  TID
-
-    tidCheckBox.addEventListener('input', function(e) {
-        if(!tidCheckBox.checked) {
-            tidInput.value = '';
-            this.deeplinkModel.removeParam('tid');
-            this.generateURL();
-        }
-    }.bind(self));
-
-
-    tidInput.addEventListener('input', function(e) {
-        this.deeplinkModel.setParam('tid',e.target.value);
-        this.generateURL();
-        this.fieldHasValue(tidInput, tidCheckBox, 'tid');
-    }.bind(self));
-
-    // // spec plan desc
-
-    specPlanDescCheckBox.addEventListener('input', function(e) {
-        if(!specPlanDescCheckBox.checked) {
-            tidInput.value = '';
-            this.deeplinkModel.removeParam('spec_plan_desc');
-            this.generateURL();
-        }
-    }.bind(self));
-
-    specPlanDescInput.addEventListener('input', function(e) {
-        this.deeplinkModel.setParam('spec_plan_desc',e.target.value);
-        this.generateURL();
-        this.fieldHasValue(specPlanDescInput, specPlanDescCheckBox, 'spec_plan_desc');
-    }.bind(self));
-
 }
 
 // create copy notification
@@ -318,17 +209,44 @@ function CopyLinkNotification() {
 
 // create input for param
 
-function AddParamInput(param, parent, label) {
+function AddParamInput(param, parent, label,view) {
     this._param = param;
     this._parent = parent;
-    this._label = label; 
+    this._label = label;
+    this._checkBox = '<input type="checkbox" name="'+ this._param  +'" id="'+ this._param +'-checkbox" value="' + this._param  +'" class="deeplinkParamCheckBox">' + this._label;
+    this._inputFieldValue = '<input type="text" id="'+ this._param +'-inputField" placeholder="'+ this._param +'" data-param="'+ this._param +'" class="deeplinkParamValue">';
 
-    var fieldSet = document.createElement('FIELDSET');
-    fieldSet.innerHTML = '<input type="checkbox" name="'+ this._param  +'" id="'+ this._param  +'-checkbox" value="' + this._param  +'" class="deeplinkParamCheckBox">' + this._label +
-                         '<input type="text" id="'+ this._param +'" placeholder="'+ this._param +'" data-param="'+ this._param +'" class="deeplinkParamValue">';
+    // create Fieldset Element
+
+    this.fieldSet = document.createElement('FIELDSET');
+    this.fieldSet.classList.add('field');
+    this.fieldSet.innerHTML =  this._checkBox + this._inputFieldValue;
+
+    parent.appendChild(this.fieldSet);
+
+    var checkbox = document.getElementById(this._param + '-checkbox');
+    var inputField = document.getElementById(this._param + '-inputField');
+                              
+    // add checkbox Event Listener
+
+    checkbox.addEventListener('input', function(e) {
+        if(!checkbox.checked) {
+            inputField.value = '';
+            view.deeplinkModel.removeParam(this._param);
+            view.generateURL();
+        }
+    }.bind(this));
+
+
+    // add input Event Listener
+
+    inputField.addEventListener('input', function(e) {
+        view.deeplinkModel.setParam(this._param,e.target.value);
+        view.generateURL();
+        view.fieldHasValue(inputField, checkbox, this._param);
+    }.bind(this));
                         
-    parent.appendChild(fieldSet);
 
 }
 
-var formUI = new DeeplinkUI();
+var formUI = new View();
