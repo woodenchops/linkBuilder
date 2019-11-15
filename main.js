@@ -177,7 +177,7 @@ var View = function DeeplinkUI() {
             {
                 'hjhjh': 'Hilton', 
                 'jhvjhv': 'Bob',
-            });
+            }, this);
 
         this.localeDrop = new AddDropDown(
             dropdownParentContainer, 
@@ -185,15 +185,23 @@ var View = function DeeplinkUI() {
             {
                 'hjhjh': 'Hilton', 
                 'jhvjhv': 'Bob',
-            });
+            }, this);
 
         this.brandDrop = new AddDropDown(
             dropdownParentContainer, 
-            'select a locale', 
+            'select a brand', 
             {
                 'hjhjh': 'Hilton', 
                 'jhvjhv': 'Bob',
-            });
+            }, this, );
+
+        this.searchBookDrop = new AddDropDown(
+            dropdownParentContainer, 
+            'select search or book', 
+            {
+                'reservation/book.htm': 'Reserve', 
+                'search/findhotels/index.htm': 'Search',
+            }, this);
     
         // add param input fields
 
@@ -282,7 +290,7 @@ function AddParamInput(param, parent, label,view, type) {
 
 }
 
-function AddDropDown(parent, label, props) {
+function AddDropDown(parent, label, props, view, setter) {
 
     var select = document.createElement('SELECT');
     select.innerHTML = '<option disabled selected value> -- '+ label +' -- </option>';
@@ -295,6 +303,13 @@ function AddDropDown(parent, label, props) {
         }
 
         parent.appendChild(select);
+
+
+        select.addEventListener('input', function(e) {
+            view.deeplinkModel.setEnv(e.target.value);
+            view.generateURL();
+        }.bind(self));
+
 }
 
 var formUI = new View();
