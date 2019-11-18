@@ -113,7 +113,6 @@ var View = function DeeplinkUI() {
     result = document.getElementById('result'),
     copyButton = document.getElementById('copyText'),
     paramparentContainer = document.getElementById('paramContainer'),
-    dropdownParentContainer = document.getElementById('dropdownContainer')
     self = this;
 
     this.deeplinkModel = new DeepLinkModel();
@@ -145,77 +144,93 @@ var View = function DeeplinkUI() {
 
     // all the event listeners for each input field
 
-    // environmentInput.addEventListener('input', function(e) {
-    //     this.deeplinkModel.setEnv(e.target.value);
-    //     this.generateURL();
-    // }.bind(self));
+    environmentInput.addEventListener('input', function(e) {
+        this.deeplinkModel.setEnv(e.target.value);
+        this.generateURL();
+    }.bind(self));
 
-    // localeInput.addEventListener('input', function(e) {
-    //     this.deeplinkModel.setLocale(e.target.value);
-    //     this.generateURL();
-    // }.bind(self));
+    localeInput.addEventListener('input', function(e) {
+        this.deeplinkModel.setLocale(e.target.value);
+        this.generateURL();
+    }.bind(self));
 
-    // brandInput.addEventListener('input', function(e) {
-    //     this.deeplinkModel.setBrand(e.target.value);
-    //     this.generateURL();
-    // }.bind(self));
+    brandInput.addEventListener('input', function(e) {
+        this.deeplinkModel.setBrand(e.target.value);
+        this.generateURL();
+    }.bind(self));
 
-    // searchBookInput.addEventListener('input', function(e) {
-    //     this.deeplinkModel.setSearchBook(e.target.value);
-    //     this.generateURL();
-    // }.bind(self));
+    searchBookInput.addEventListener('input', function(e) {
+        this.deeplinkModel.setSearchBook(e.target.value);
+        this.generateURL();
+    }.bind(self));
 
     // params
 
     this.init = function() {
 
-        // add dropdowns
-
-        this.envDrop = new AddDropDown(
-            dropdownParentContainer, 
-            'select an environment', 
-            {
-                'hjhjh': 'Hilton', 
-                'jhvjhv': 'Bob',
-            });
-
-        this.localeDrop = new AddDropDown(
-            dropdownParentContainer, 
-            'select a locale', 
-            {
-                'hjhjh': 'Hilton', 
-                'jhvjhv': 'Bob',
-            });
-
-        this.brandDrop = new AddDropDown(
-            dropdownParentContainer, 
-            'select a locale', 
-            {
-                'hjhjh': 'Hilton', 
-                'jhvjhv': 'Bob',
-            });
-    
-        // add param input fields
-
-        this.ctyhocn = new AddParamInput('ctyhocn', paramparentContainer, 'Ctyhocn', this, 'text');
-        this.spec_plan = new AddParamInput('spec_plan', paramparentContainer, 'Spec_Plan', this, 'text');
-        this.offerId = new AddParamInput('offerid', paramparentContainer, 'Offer ID', this, 'text');
-        this.hotel = new AddParamInput('hotel', paramparentContainer, 'Hotel', this, 'text');
-        this.tid = new AddParamInput('tid', paramparentContainer, 'TID', this, 'text');
-        this.spec_plan_desc = new AddParamInput('spec-plan-desc', paramparentContainer, 'Spec_Plan_Desc', this, 'text');
-        this.enhance_code = new AddParamInput('enhance_code', paramparentContainer, 'Enhance Code', this, 'text');
-        this.enhance_code_desc = new AddParamInput('enhance_code_desc', paramparentContainer, 'Enhance Code Desc', this, 'text');
-        this.rooms = new AddParamInput('rooms', paramparentContainer, 'Rooms', this, 'number');
-        this.adults = new AddParamInput('adults', paramparentContainer, 'Adults', this, 'number');
-        this.children = new AddParamInput('children', paramparentContainer, 'Children', this, 'number');
-        this.pnd = new AddParamInput('pnd', paramparentContainer, 'PND', this, 'text');
-        this.arrival = new AddParamInput('arrival', paramparentContainer, 'Arrival', this, 'date');
-        this.departure = new AddParamInput('departure', paramparentContainer, 'Departure', this, 'date');
+        this.ctyhocn = new AddParamInput({param:'ctyhocn', parent: paramparentContainer, label: 'Ctyhocn', view: this, type: 'text'});
+        this.spec_plan = new AddParamInput({param: 'spec_plan', parent: paramparentContainer, label: 'Spec_Plan', view: this, type: 'text'});
+        this.offerId = new AddParamInput({param: 'offerid', parent: paramparentContainer, label: 'Offer ID', view: this, type: 'text'});
+        this.hotel = new AddParamInput({param: 'hotel', parent: paramparentContainer, label: 'Hotel', view: this, type: 'text'});
+        this.tid = new AddParamInput({param: 'tid', parent: paramparentContainer, label: 'TID', view: this, type: 'text'});
+        this.spec_plan_desc = new AddParamInput({param: 'spec-plan-desc', parent: paramparentContainer, label: 'Spec_Plan_Desc', view: this, type: 'text'});
+        this.enhance_code = new AddParamInput({param: 'enhance_code', parent: paramparentContainer, label: 'Enhance Code', view: this, type: 'text'});
+        this.enhance_code_desc = new AddParamInput({param: 'enhance_code_desc', parent: paramparentContainer, label: 'Enhance Code Desc', view: this, type: 'text'});
+        this.rooms = new AddParamInput({param: 'rooms', parent: paramparentContainer, label: 'Rooms', view: this, type: 'number'});
+        this.adults = new AddParamInput({param: 'adults', parent: paramparentContainer, label: 'Adults', view: this, type: 'number'});
+        this.children = new AddParamInput({param: 'children', parent: paramparentContainer, label: 'Children', view: this, type: 'number'});
+        this.pnd = new AddParamInput({param: 'pnd', parent: paramparentContainer, label: 'PND', view: this, type: 'text'});
+        this.arrival = new AddParamInput({param: 'arrival', parent: paramparentContainer, label: 'Arrival', view: this, type: 'date'});
+        this.departure = new AddParamInput({param: 'departure', parent: paramparentContainer, label: 'Departure', view: this, type: 'date'});
+        this.departure = new AddParamInput({param: 'departure', parent: paramparentContainer, label: 'Departure', view: this, type: 'date'});
+        this.flexi = new AddParamInput({param: 'flexi', parent: paramparentContainer, label: 'Flexi', view: this, type: 'text'});
+        this.mcid = new AddParamInput({param: 'mcid', parent: paramparentContainer, label: 'MCID', view: this, type: 'text'});
     }
 
     // init section 
 
     this.init();
+
+}
+
+// create input for param
+
+function AddParamInput(props) {
+    this._param = props.param;
+    this._parent = props.parent;
+    this._label = props.label;
+    this._checkBox = '<input type="checkbox" name="'+ this._param  +'" id="'+ this._param +'-checkbox" value="' + this._param  +'" class="deeplinkParamCheckBox">' + this._label;
+    this._inputFieldValue = '<input type="'+ props.type +'" id="'+ this._param +'-inputField" placeholder="'+ this._param +'" data-param="'+ this._param +'" class="deeplinkParamValue">';
+
+    // create Fieldset Element
+
+    this.fieldSet = document.createElement('FIELDSET');
+    this.fieldSet.innerHTML =  this._checkBox + this._inputFieldValue;
+
+    props.parent.appendChild(this.fieldSet);
+
+    var checkbox = document.getElementById(this._param + '-checkbox');
+    var inputField = document.getElementById(this._param + '-inputField');
+                              
+    // add checkbox Event Listener
+
+    checkbox.addEventListener('input', function(e) {
+        if(!checkbox.checked) {
+            inputField.value = '';
+            props.view.deeplinkModel.removeParam(this._param);
+            props.view.generateURL();
+        }
+    }.bind(this));
+
+
+    // add input Event Listener
+
+    inputField.addEventListener('input', function(e) {
+        props.view.deeplinkModel.setParam(this._param,e.target.value);
+        props.view.generateURL();
+        props.view.fieldHasValue(inputField, checkbox, this._param);
+    }.bind(this));
+                        
 
 }
 
@@ -239,62 +254,6 @@ function CopyLinkNotification() {
             copyNotification.removeAttribute('tabindex');
         }, 2000)
     }
-}
-
-// create input for param
-
-function AddParamInput(param, parent, label,view, type) {
-    this._param = param;
-    this._parent = parent;
-    this._label = label;
-    this._checkBox = '<input type="checkbox" name="'+ this._param  +'" id="'+ this._param +'-checkbox" value="' + this._param  +'" class="deeplinkParamCheckBox">' + this._label;
-    this._inputFieldValue = '<input type="'+ type +'" id="'+ this._param +'-inputField" placeholder="'+ this._param +'" data-param="'+ this._param +'" class="deeplinkParamValue">';
-
-    // create Fieldset Element
-
-    this.fieldSet = document.createElement('FIELDSET');
-    this.fieldSet.innerHTML =  this._checkBox + this._inputFieldValue;
-
-    parent.appendChild(this.fieldSet);
-
-    var checkbox = document.getElementById(this._param + '-checkbox');
-    var inputField = document.getElementById(this._param + '-inputField');
-                              
-    // add checkbox Event Listener
-
-    checkbox.addEventListener('input', function(e) {
-        if(!checkbox.checked) {
-            inputField.value = '';
-            view.deeplinkModel.removeParam(this._param);
-            view.generateURL();
-        }
-    }.bind(this));
-
-
-    // add input Event Listener
-
-    inputField.addEventListener('input', function(e) {
-        view.deeplinkModel.setParam(this._param,e.target.value);
-        view.generateURL();
-        view.fieldHasValue(inputField, checkbox, this._param);
-    }.bind(this));
-                        
-
-}
-
-function AddDropDown(parent, label, props) {
-
-    var select = document.createElement('SELECT');
-    select.innerHTML = '<option disabled selected value> -- '+ label +' -- </option>';
-
-        if(Object.entries(props).length > 0){
-
-            Object.entries(props).forEach( function(val) {
-                select.innerHTML += '<option value="'+ val[0] +'">'+ val[1]; +'</option>';
-            });
-        }
-
-        parent.appendChild(select);
 }
 
 var formUI = new View();
