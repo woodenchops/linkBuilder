@@ -104,15 +104,15 @@ function DeepLinkModel(){
 }
 
 
-var View = function DeeplinkUI() {
+var View = function DeeplinkUI(props) {
         
-    var environmentInput = document.getElementById('environment'),
-    localeInput = document.getElementById('locale'),
-    brandInput = document.getElementById('brand'),
-    searchBookInput = document.getElementById('searchBook'),
-    result = document.getElementById('result'),
-    copyButton = document.getElementById('copyText'),
-    paramparentContainer = document.getElementById('paramContainer'),
+    var environmentInput = document.getElementById(props.env),
+    localeInput = document.getElementById(props.locale),
+    brandInput = document.getElementById(props.brand),
+    searchBookInput = document.getElementById(props.searchBook),
+    result = document.getElementById(props.result),
+    copyButton = document.getElementById(props.copyBtn),
+    paramparentContainer = document.getElementById(props.parent),
     self = this;
 
     this.deeplinkModel = new DeepLinkModel();
@@ -256,4 +256,4 @@ function CopyLinkNotification() {
     }
 }
 
-var formUI = new View();
+var formUI = new View({parent: 'paramContainer', locale: 'locale', env: 'environment', brand: 'brand', searchBook: 'searchBook', result: 'result', copyBtn: 'copyText'});
