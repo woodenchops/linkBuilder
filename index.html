@@ -29,7 +29,7 @@
             display: block;
         }
 
-        #copy-notification {
+        .copy-notification {
             background-color: #5cd882;
             color: #fff;
             padding: 0;
@@ -43,12 +43,12 @@
             overflow: hidden;
         }
 
-        #copy-notification.show {
+        .copy-notification.show {
             padding: 10px 0px;
             max-height: 100px;
         }
 
-        #copy-notification p {
+        .copy-notification p {
             font-size: 18px;
             margin: 0;
             font-family: sans-serif;
@@ -69,7 +69,7 @@
 </head>
 <body>
 
-    <div id="copy-notification" aria-label="link has been copied" aria-live="assertive">
+    <div class="copy-notification" aria-label="link has been copied" aria-live="assertive">
         <p>Link has been copied!</p>
     </div>
 

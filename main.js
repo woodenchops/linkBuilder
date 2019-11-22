@@ -113,11 +113,12 @@ var View = function DeeplinkUI(props) {
     result = document.getElementById(props.result),
     copyButton = document.getElementById(props.copyBtn),
     paramparentContainer = document.getElementById(props.parent),
+    copyNotification = props.copyNotification;
     self = this;
 
     this.deeplinkModel = new DeepLinkModel();
 
-    this.copyLinkNotification = new CopyLinkNotification();
+    this.copyLinkNotification = new CopyLinkNotification(copyNotification);
 
     this.fieldHasValue = function(input, checkbox, param) {
         if(input.value.length <= 0) {
@@ -235,9 +236,9 @@ function AddParamInput(props) {
 }
 
 // create copy notification
-function CopyLinkNotification() {
+function CopyLinkNotification(x) {
 
-    var copyNotification = document.getElementById('copy-notification');
+    var copyNotification = document.querySelector(x);
 
     this.display = function() {
 
@@ -256,4 +257,4 @@ function CopyLinkNotification() {
     }
 }
 
-var formUI = new View({parent: 'paramContainer', locale: 'locale', env: 'environment', brand: 'brand', searchBook: 'searchBook', result: 'result', copyBtn: 'copyText'});
+var formUI = new View({parent: 'paramContainer', locale: 'locale', env: 'environment', brand: 'brand', searchBook: 'searchBook', result: 'result', copyBtn: 'copyText', copyNotification: '.copy-notification'});
