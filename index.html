@@ -75,10 +75,15 @@
 
     <div id="dropdownContainer">
 
+    <button id="ohw-generator">Create OHW Link</button>
+
+    <button id="standard-generator">Create Standard Deep Link</button>
+
     <label for="environment"></label>
     <select id="environment" class="linkField">
         <option disabled selected value> -- select an environment -- </option>
         <option value="www3.hilton.com/">Hilton</option>
+        <option value="www.hilton.com/">OHW Hilton</option>
         <option value="hhonors3.hilton.com/">HHonors</option>
         <option value="hhonors3.hilton.com/">HHonors</option>
         <option value="conradhotels3.hilton.com/">Conrad</option>
@@ -118,6 +123,7 @@
     <select id="searchBook" class="linkField">
         <option disabled selected value> -- select search or book -- </option>
         <option value="reservation/book.htm">Reserve</option>
+        <option value="book/reservation/deeplink">OHW Reserve</option>
         <option value="search/findhotels/index.htm">Search</option>
     </select><br>
 
@@ -135,6 +141,6 @@
         <button id="copyText">Copy Link</button>
     </div>
 
- <script src="main.js"></script>   
+ <script src="main.js" type="module"></script>   
 </body>
 </html>
