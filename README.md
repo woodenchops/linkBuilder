@@ -1,8 +1,13 @@
-import View from './DeeplinkUI.js';
-/*
-DeepLinkModel => builds the link - getters and setters
-DeeplinkUI => builds the link via a form 
-*/
+# Deeplink Builder 
+
+This plugin is used to create a OHW Deeplink 
+
+**preview: https://deeplink.hiltonwebpreview.com/**
+
+## example init:
+
+```js
+
 var formUI = new View({
     parent: 'paramContainer', 
     locale: 'locale', 
@@ -18,5 +23,4 @@ var formUI = new View({
     clearInput: 'clearInput'
 });
 
-
-console.log(formUI);
+```

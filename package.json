@@ -1,0 +1,15 @@
+{
+  "name": "link-builder",
+  "version": "1.0.0",
+  "description": "This plugin is used to create a OHW Deeplink",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@d3git.com:public-code/deeplink-builder.git"
+  },
+  "author": "",
+  "license": "ISC"
+}

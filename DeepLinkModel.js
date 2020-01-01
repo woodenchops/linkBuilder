@@ -65,6 +65,10 @@ function DeepLinkModel(){
         delete this._params[param];
     }
 
+    this.formatQueryString = function(qs) {
+       return qs.split('-').join('').split(' ').join('_');
+    }
+
     this.buildParamString = function(){
 
         var queryString = "";
@@ -77,7 +81,7 @@ function DeepLinkModel(){
             });
         }
 
-        return queryString;
+        return this.formatQueryString(queryString);
 
     }
 

@@ -13,6 +13,8 @@ var View = function DeeplinkUI(props) {
     copyNotification = props.copyNotification,
     ohwCTA = document.getElementById(props.ohwCTA),
     standardDeepLinkCTA = document.getElementById(props.standardLinkCTA),
+    testLinkCTA = document.getElementById(props.testLinkCTA),
+    clearInput = document.getElementById(props.clearInput),
     self = this;
 
 
@@ -80,9 +82,18 @@ var View = function DeeplinkUI(props) {
 
     copyButton.addEventListener('click', this.copyLink);
 
+
     this.generateURL = function () {
         result.value = this.deeplinkModel.getURL();
     }
+
+    testLinkCTA.addEventListener('click', function() {
+        window.open(result.value);
+    }.bind(self));
+
+    clearInput.addEventListener('click', function() {
+        result.value = '';
+    }.bind(self))
 
     // all the event listeners for each input field
 
@@ -131,7 +142,6 @@ var View = function DeeplinkUI(props) {
         this.children = new AddParamInput({param: 'children', parent: paramparentContainer, label: 'Children', view: this, type: 'number'});
         this.pnd = new AddParamInput({param: 'pnd', parent: paramparentContainer, label: 'PND', view: this, type: 'text'});
         this.arrival = new AddParamInput({param: 'arrival', parent: paramparentContainer, label: 'Arrival', view: this, type: 'date'});
-        this.departure = new AddParamInput({param: 'departure', parent: paramparentContainer, label: 'Departure', view: this, type: 'date'});
         this.departure = new AddParamInput({param: 'departure', parent: paramparentContainer, label: 'Departure', view: this, type: 'date'});
         this.flexi = new AddParamInput({param: 'flexi', parent: paramparentContainer, label: 'Flexi', view: this, type: 'text'});
         this.mcid = new AddParamInput({param: 'mcid', parent: paramparentContainer, label: 'MCID', view: this, type: 'text'});

@@ -2,6 +2,7 @@
 // create input for param
 
 function AddParamInput(props) {
+    this._props = props;
     this._param = props.param;
     this._parent = props.parent;
     this._label = props.label;
@@ -37,7 +38,7 @@ function AddParamInput(props) {
         props.view.fieldHasValue(inputField, checkbox, this._param);
     }.bind(this));
                         
-
 }
+
 
 export default AddParamInput;

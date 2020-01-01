@@ -1,7 +1,7 @@
 // create copy notification
 function CopyLinkNotification(x) {
 
-    var copyNotification = document.querySelector(x);
+    var copyNotification = document.getElementById(x);
 
     this.display = function() {
 
