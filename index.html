@@ -4,145 +4,137 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Link Builder</title>
-    <style>
-    
-        #result {
-            display: block;
-            width: 100%;
-            margin-right: 10px;;
-        }
-
-        #result-container {
-            display: flex;
-        }
-
-        fieldset {
-            border: none;
-        }
-
-        .deeplinkParamCheckBox + .deeplinkParamValue  {
-            display: none;
-        }
-
-        .deeplinkParamCheckBox:checked + .deeplinkParamValue {
-            display: block;
-        }
-
-        #copy-notification {
-            background-color: #5cd882;
-            color: #fff;
-            padding: 0;
-            text-align: center;
-            max-height: 0;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            transition: 1s ease;
-            overflow: hidden;
-        }
-
-        #copy-notification.show {
-            padding: 10px 0px;
-            max-height: 100px;
-        }
-
-        #copy-notification p {
-            font-size: 18px;
-            margin: 0;
-            font-family: sans-serif;
-        }
-
-        .paramContainer {
-            display: flex;
-            flex-wrap: wrap;
-            max-width: 800px;
-        }
-
-        select {
-            display: block;
-            margin: 10px 0;
-        }
-
-    </style>
+    <link rel="stylesheet" href="./dist/main.min.css">
+    <title>Super awesome Deeplink Builder</title>
 </head>
 <body>
 
-    <div id="copy-notification" aria-label="link has been copied" aria-live="assertive">
-        <p>Link has been copied!</p>
-    </div>
+    <main class="main-wrapper">
 
-    <div id="dropdownContainer">
+        <header>
 
-    <button id="ohw-generator">Create OHW Link</button>
+        <!-- copy link notification -->
 
-    <button id="standard-generator">Create Standard Deep Link</button>
+            <div id="copy-notification" aria-label="link has been copied" aria-live="assertive">
+                <p>Link has been copied!</p>
+            </div>
 
-    <label for="environment"></label>
-    <select id="environment" class="linkField">
-        <option disabled selected value> -- select an environment -- </option>
-        <option value="www3.hilton.com/">Hilton</option>
-        <option value="www.hilton.com/">OHW Hilton</option>
-        <option value="hhonors3.hilton.com/">HHonors</option>
-        <option value="hhonors3.hilton.com/">HHonors</option>
-        <option value="conradhotels3.hilton.com/">Conrad</option>
-        <option value="doubletree3.hilton.com/">DoubleTree</option>
-        <option value="embassysuites3.hilton.com/">Embassy</option>
-        <option value="hiltongardeninn3.hilton.com/">HGI</option>
-        <option value="hamptoninn3.hilton.com/">Hampton</option>
-        <option value="homewoodsuites3.hilton.com/">Homewood</option>
-        <option value="home2suites3.hilton.com/">Home2Suites</option>
-        <option value="secure3.hilton.com/">secure3</option> 
-    </select><br>
+            <!-- hilton logo -->
 
-    <label for="locale"></label>
-    <select id="locale" class="linkField">
-        <option disabled selected value> -- select a locale -- </option>
-        <option value="en/">EN</option>
-        <option value="es/">ES</option>
-        <option value="pt/">PT</option>
-    </select><br>
+            <img src="images/Screen Shot 2020-01-23 at 15.11.30.png" alt="">
 
-    <label for="brand"></label>
-    <select id="brand" class="linkField">
-        <option disabled selected value> -- select a brand -- </option>
-        <option value="hh/">Hilton HHonors</option>
-        <option value="ch/">Conrad Hotels & Resorts</option>
-        <option value="wa/">Waldorf Astoria</option>
-        <option value="hi/">Hilton Hotels & Resorts</option>
-        <option value="dt/">DoubleTree by Hilton</option>
-        <option value="es/">Embassy Suites</option>
-        <option value="gi/">Hilton Garden Inn</option>
-        <option value="hp/">Hampton Hotels</option>
-        <option value="hw/">Homewood Suites</option>
-        <option value="ht/">Home2 Suites by Hilton</option>
-    </select><br>
+        </header>
 
-    <label for="searchBook"></label>
-    <select id="searchBook" class="linkField">
-        <option disabled selected value> -- select search or book -- </option>
-        <option value="reservation/book.htm">Reserve</option>
-        <option value="book/reservation/deeplink">OHW Reserve</option>
-        <option value="search/findhotels/index.htm">Search</option>
-    </select><br>
 
-</div>
+        <!-- title section -->
 
-    <!-- params -->
+        <section class="title-section">
+            <h1 class="title">Deeplink form</h1>
+        </section>
 
-    <div class="paramContainer" id="paramContainer">
+        <!-- buttons -->
 
-    
-    </div>
+        <section class="button-container section-container">
 
-    <div id="result-container">
-        <input id="result"/>
-        <button id="copyText">Copy Link</button>
-        <button id="testLink">Test Link</button>
-        <button id="clearInput">Clear</button>
-    </div>
+            <button id="ohw-generator" class="btn link-generator">Create OHW Link</button>
 
- <script src="main.js" type="module"></script>   
+            <button id="standard-generator" class="btn link-generator">Create Standard Deep Link</button>
+
+        </section>
+
+        <!-- select dropdown -->
+
+        <section class="select-dropdown-container section-container">
+
+            <!-- env -->
+
+            <fieldset>
+                <label for="environment"></label>
+                <select id="environment" class="linkField">
+                    <option disabled selected value> -- select an environment -- </option>
+                    <option value="www3.hilton.com/">Hilton</option>
+                    <option value="www.hilton.com/">OHW Hilton</option>
+                    <option value="hhonors3.hilton.com/">HHonors</option>
+                    <option value="hhonors3.hilton.com/">HHonors</option>
+                    <option value="conradhotels3.hilton.com/">Conrad</option>
+                    <option value="doubletree3.hilton.com/">DoubleTree</option>
+                    <option value="embassysuites3.hilton.com/">Embassy</option>
+                    <option value="hiltongardeninn3.hilton.com/">HGI</option>
+                    <option value="hamptoninn3.hilton.com/">Hampton</option>
+                    <option value="homewoodsuites3.hilton.com/">Homewood</option>
+                    <option value="home2suites3.hilton.com/">Home2Suites</option>
+                    <option value="secure3.hilton.com/">secure3</option> 
+                </select>
+            </fieldset>
+
+            <!-- locale -->
+
+        <fieldset>
+            <label for="locale"></label>
+            <select id="locale" class="linkField">
+                <option disabled selected value> -- select a locale -- </option>
+                <option value="en_US/">EN</option>
+                <option value="es/">ES</option>
+                <option value="pt/">PT</option>
+            </select>
+        </fieldset>
+            <!-- brand -->
+
+        <fieldset>
+            <label for="brand"></label>
+            <select id="brand" class="linkField">
+                <option disabled selected value> -- select a brand -- </option>
+                <option value="hh/">Hilton HHonors</option>
+                <option value="ch/">Conrad Hotels & Resorts</option>
+                <option value="wa/">Waldorf Astoria</option>
+                <option value="hi/">Hilton Hotels & Resorts</option>
+                <option value="dt/">DoubleTree by Hilton</option>
+                <option value="es/">Embassy Suites</option>
+                <option value="gi/">Hilton Garden Inn</option>
+                <option value="hp/">Hampton Hotels</option>
+                <option value="hw/">Homewood Suites</option>
+                <option value="ht/">Home2 Suites by Hilton</option>
+            </select>
+        </fieldset>
+            <!-- search or book -->
+
+        <fieldset>
+            <label for="searchBook"></label>
+            <select id="searchBook" class="linkField">
+                <option disabled selected value> -- select search or book -- </option>
+                <option value="reservation/book.htm">Reserve</option>
+                <option value="book/reservation/deeplink">OHW Reserve</option>
+                <option value="search/findhotels/index.htm">Search</option>
+            </select>
+        </fieldset>
+
+        </section>
+
+        <!-- Params -->
+
+        <section class="params-container section-container">
+
+            <div class="inner-param-container" id="paramContainer"></div>
+
+        </section>
+
+        <!-- results -->
+
+
+        <section class="results-container section-container">
+
+                <input  id="result" placeholder="https://">
+
+            <section class="result-cta-section section-container">
+                    <button id="copyText" class="btn">Copy Link</button>
+                    <button id="testLink" class="btn">Test Link</button>
+                    <button id="clearInput" class="btn">Clear</button>
+            </section>
+         
+        </section>
+
+    </main>
+
+    <script src="./main.js" type="module"></script>   
 </body>
 </html>

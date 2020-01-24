@@ -1,0 +1,329 @@
+* {
+    box-sizing: border-box;
+}
+
+
+/*********************************
+
+    MAIN WRAPPER
+
+*********************************/
+
+
+/*********************************
+
+    FONT STYLES
+
+*********************************/
+
+h1.title {
+    color: #009ddf;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 1rem;
+    margin-top: 2rem;
+}
+
+
+/*********************************
+
+    COPY NOTIFICATION
+
+*********************************/
+
+#copy-notification {
+    background-color: #5cd882;
+    color: #fff;
+    padding: 0;
+    text-align: center;
+    max-height: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: 1s ease;
+    overflow: hidden;
+}
+
+#copy-notification.show {
+    padding: 10px 0px;
+    max-height: 100px;
+}
+
+#copy-notification p {
+    font-size: 18px;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+/*********************************
+
+    SELECT INPUT
+
+*********************************/
+
+select {
+    -webkit-appearance: none;
+    -webkit-border-radius: 0px;
+  }
+
+select {
+    padding: 10px 30px;
+    display: block;
+    border: 1px solid #d4d4d4;
+    height: 36px;
+    background: transparent;
+    border-radius: 0;
+    width: 100%;
+    pointer-events: all;
+  }
+
+
+
+
+/*********************************
+
+    BUTTON INPUT
+
+*********************************/
+
+.btn {
+
+    background-color: transparent;
+    border: 1px solid #064b99;
+    padding: 10px 30px;
+    color: #064b99;
+    font-size: 13px;
+    margin: 0 1rem;
+    margin-bottom: 8px;
+    width: 225px;
+    &:hover {
+        cursor: pointer;
+        background-color: #064b99;
+        color: #fff;
+    }
+}
+
+.btn.active {
+    background-color: #064b99;
+    color: #fff;
+    &:hover {
+        background-color: #033771;
+        color: #fff;
+    }
+}
+
+
+/*********************************
+
+    CHECKBOX INPUT
+
+*********************************/
+
+fieldset {
+    border: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #333;
+}
+
+/*********************************
+
+    GENERAL SECTION LAYOUT
+
+*********************************/
+
+.section-container {
+
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 605px;
+}
+
+.title-section {
+    position: relative;
+    padding-top: 2rem;
+}
+
+.results-container::before,
+.title-section::before {
+    content: "";
+    width: calc(100vw - 10%);
+    height: 1px;
+    background-color: #c3c3c3;
+    position: absolute;
+    right: 0;
+    left: 0;
+}
+
+.title-section::before {
+  width: calc(100vw - 5%);
+}
+
+
+
+
+/*********************************
+
+    BUTTON SECTION LAYOUT
+
+*********************************/
+
+
+/*********************************
+
+    SELECT SECTION LAYOUT
+
+*********************************/
+
+.select-dropdown-container {
+    fieldset {
+        padding: 0;
+        margin: 8px 1rem;
+        flex-basis: 225px;
+        pointer-events: none;
+        position: relative;
+    }
+
+    fieldset::after {
+        content: url(../../images/icons-arrows-dropdown-black.svg);
+        width: 40px;
+        height: 25px;
+        position: absolute;
+        right: 0;
+        top: 7px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        pointer-events: none;
+    }
+}
+
+
+
+/*********************************
+
+    CHECKBOX SECTION LAYOUT
+
+*********************************/
+
+.params-container {
+    padding-left: 5px;
+    margin-top: 1rem;
+    .inner-param-container {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        fieldset {
+            width: 25%;
+            margin: 0px;
+        }
+    }
+
+    .deeplinkParamCheckBox + .deeplinkParamValue  {
+        display: none;
+    }
+    
+    .deeplinkParamCheckBox:checked + .deeplinkParamValue {
+        display: block;
+    }
+
+    input {
+        max-width: 84px;
+    }
+}
+
+
+/*********************************
+
+    RESULTS LAYOUT
+
+*********************************/
+.results-container {
+
+    position: relative;
+    margin-top: 2rem;
+    padding-left: 1rem;
+
+    #result {
+        margin: 2rem 0;
+        display: block;
+        width: 100%;
+        margin-right: 10px;
+        padding: 10px 30px;
+        padding-left: 1rem;
+        display: block;
+        border: 1px solid #d4d4d4;
+    }
+
+    .btn {
+        max-width: calc(33.3% - 1.5rem);
+        background-color: #064b99;
+        color: #fff;
+        &:hover {
+            background-color: #033771;
+            color: #fff;
+        }
+    }
+
+    .btn:first-of-type {
+        margin-left: 0;
+    }
+
+    .btn:last-of-type {
+        margin-right: 0;
+    }
+
+    .result-cta-section {
+        width: 100%;
+    }
+
+}
+
+
+/*********************************
+
+   MOBILE LAYOUT
+
+*********************************/
+
+
+@media screen and (max-width: 580px) {
+
+    main {
+        padding: 0 1rem;
+    }
+
+    .button-container {
+        padding: 0 1rem;
+        .btn {
+            width: 100%;
+            margin: .5rem 0;
+        }
+    }
+
+    .select-dropdown-container {
+        fieldset {
+           flex-grow: 1;
+        }
+    }
+
+    .params-container {
+        .inner-param-container {
+            fieldset {
+                width: 50%;
+            }
+        }
+    }
+
+    .results-container {
+        padding: 0 1rem;
+        .result-cta-section {
+
+            button.btn {
+                margin: .5rem 0;
+                flex-grow: 1;
+                max-width: none;
+            }
+        }
+    }
+}

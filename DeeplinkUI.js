@@ -22,45 +22,75 @@ var View = function DeeplinkUI(props) {
 
     this.copyLinkNotification = new CopyLinkNotification(copyNotification);
 
+    var OHWPreset = {
+        env: 'www.hilton.com/',
+        locale: 'en_US/',
+        book: 'book/reservation/deeplink'
+    };
+
+    var standardDeeplinkPreset = {
+        env: 'www3.hilton.com/',
+        locale: 'en_US/',
+        brand: 'hi/',
+        book: 'reservation/book.htm'
+    };
+
     this.createOHWLink = function() {
-        var env = 'www.hilton.com/';
-        var locale = 'en/';
-        var book = 'book/reservation/deeplink';
-        this.deeplinkModel.setEnv(env);
-        this.deeplinkModel.setLocale(locale);
-        this.deeplinkModel.setSearchBook(book);
+        this.deeplinkModel.setEnv(OHWPreset.env);
+        this.deeplinkModel.setLocale(OHWPreset.locale);
+        this.deeplinkModel.setSearchBook(OHWPreset.book);
         brandInput.disabled = true;
 
         // set options
-        environmentInput.value = env;
-        localeInput.value = locale;
-        searchBookInput.value = book;
+        environmentInput.value = OHWPreset.env;
+        localeInput.value = OHWPreset.locale;
+        searchBookInput.value = OHWPreset.book;
+        
+        // set active class on cta
+        standardDeepLinkCTA.classList.remove('active');
+        ohwCTA.classList.add('active');
 
         // generate URL
         this.generateURL();
-    }
+    };
 
     this.createStandardDeeplink = function() {
-        var env = '';
-        var locale = '';
-        var brand = '';
-        var book = '';
-        this.deeplinkModel.setEnv(env);
-        this.deeplinkModel.setLocale(locale);
-        this.deeplinkModel.setBrand(brand);
-        this.deeplinkModel.setSearchBook(book);
+        this.deeplinkModel.setEnv(standardDeeplinkPreset.env);
+        this.deeplinkModel.setLocale(standardDeeplinkPreset.locale);
+        this.deeplinkModel.setBrand(standardDeeplinkPreset.brand);
+        this.deeplinkModel.setSearchBook(standardDeeplinkPreset.book);
         brandInput.disabled = false;
 
         // set options
-        environmentInput.value = env;
-        localeInput.value = locale;
-        brandInput.value = brand;
-        searchBookInput.value = book;
+        environmentInput.value = standardDeeplinkPreset.env;
+        localeInput.value = standardDeeplinkPreset.locale;
+        brandInput.value = standardDeeplinkPreset.brand;
+        searchBookInput.value = standardDeeplinkPreset.book;
+
+        // set active class on cta
+        ohwCTA.classList.remove('active');
+        standardDeepLinkCTA.classList.add('active');
 
         // generate URL
         this.generateURL();
 
-    }
+    };
+
+    this.reset = function() {
+
+        this.deeplinkModel.setEnv('');
+        this.deeplinkModel.setLocale('');
+        this.deeplinkModel.setBrand('');
+        this.deeplinkModel.setSearchBook('');
+
+        environmentInput.value = '';
+        localeInput.value = '';
+        brandInput.value = '';
+        searchBookInput.value = '';
+
+        result.value = '';
+
+    };
 
 
     this.fieldHasValue = function(input, checkbox, param) {
@@ -77,7 +107,11 @@ var View = function DeeplinkUI(props) {
         result.select();
         document.execCommand("copy");
         result.setSelectionRange(0, 99999); /*For mobile devices*/
-        this.copyLinkNotification.display();
+        if(result.value.length <= 0) {
+            alert('No link to copy - please provide a link');
+        } else {
+            this.copyLinkNotification.display();
+        }
     }.bind(self);
 
     copyButton.addEventListener('click', this.copyLink);
@@ -88,12 +122,16 @@ var View = function DeeplinkUI(props) {
     }
 
     testLinkCTA.addEventListener('click', function() {
-        window.open(result.value);
+        if(result.value.length <= 0) {
+            alert('No link to test - please provide a link');
+        } else {
+            window.open(result.value);
+        }
     }.bind(self));
 
     clearInput.addEventListener('click', function() {
-        result.value = '';
-    }.bind(self))
+        this.reset();
+    }.bind(self));
 
     // all the event listeners for each input field
 
@@ -145,7 +183,10 @@ var View = function DeeplinkUI(props) {
         this.departure = new AddParamInput({param: 'departure', parent: paramparentContainer, label: 'Departure', view: this, type: 'date'});
         this.flexi = new AddParamInput({param: 'flexi', parent: paramparentContainer, label: 'Flexi', view: this, type: 'text'});
         this.mcid = new AddParamInput({param: 'mcid', parent: paramparentContainer, label: 'MCID', view: this, type: 'text'});
-    }
+
+        // set the standard deeplink as active on page load
+        this.createStandardDeeplink();
+    };
 
     // init section 
 

@@ -1,5 +1,5 @@
 {
-  "name": "link-builder",
+  "name": "deeplink-builder",
   "version": "1.0.0",
   "description": "This plugin is used to create a OHW Deeplink",
   "main": "main.js",
@@ -11,5 +11,11 @@
     "url": "git@d3git.com:public-code/deeplink-builder.git"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^4.0.2"
+  }
 }
