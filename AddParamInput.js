@@ -6,13 +6,19 @@ function AddParamInput(props) {
     this._param = props.param;
     this._parent = props.parent;
     this._label = props.label;
-    this._checkBox = '<input type="checkbox" name="'+ this._param  +'" id="'+ this._param +'-checkbox" value="' + this._param  +'" class="deeplinkParamCheckBox">' + this._label;
-    this._inputFieldValue = '<input type="'+ props.type +'" id="'+ this._param +'-inputField" placeholder="'+ this._param +'" data-param="'+ this._param +'" class="deeplinkParamValue">';
+    this._checked = props.checked;
+    this._min = props.min || null;
+    this._max = props.max || null;
+    this._tooltip_info = props.tooltip_info || this._param;
+    this._tooltip = '<div class="param-tooltip param-'+this._param+'" data-title="'+ this._tooltip_info +'"></div>';
+    this._checkBox = '<input type="checkbox" '+ this._checked  +' name="'+ this._param  +'" id="'+ this._param +'-checkbox" value="' + this._param  +'" class="deeplinkParamCheckBox">' + this._label;
+    this._inputFieldValue = '<input type="'+ props.type +'" id="'+ this._param +'-inputField" placeholder="'+ this._param +'" data-param="'+ this._param +'" class="deeplinkParamValue" '+ this._min +' '+ this._max +'>';
 
     // create Fieldset Element
 
     this.fieldSet = document.createElement('FIELDSET');
-    this.fieldSet.innerHTML =  this._checkBox + this._inputFieldValue;
+    this.fieldSet.classList.add('param-fieldset');
+    this.fieldSet.innerHTML =  this._tooltip + this._checkBox + this._inputFieldValue;
 
     props.parent.appendChild(this.fieldSet);
 

@@ -21,7 +21,7 @@
 
             <!-- hilton logo -->
 
-            <img src="images/Screen Shot 2020-01-23 at 15.11.30.png" alt="">
+            <img src="images/hi-black.svg" class="logo" alt="hilton hotels logo">
 
         </header>
 
@@ -30,19 +30,24 @@
 
         <section class="title-section">
             <h1 class="title">Deeplink form</h1>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda accusantium.</p>
         </section>
 
         <!-- buttons -->
 
+        <h3 class="title section-title">Required fields:</h3>
+
         <section class="button-container section-container">
 
-            <button id="ohw-generator" class="btn link-generator">Create OHW Link</button>
+
+            <button id="ohw-generator" class="btn link-generator btn--first">Create OHW Link</button>
 
             <button id="standard-generator" class="btn link-generator">Create Standard Deep Link</button>
 
         </section>
 
         <!-- select dropdown -->
+
 
         <section class="select-dropdown-container section-container">
 
@@ -54,7 +59,6 @@
                     <option disabled selected value> -- select an environment -- </option>
                     <option value="www3.hilton.com/">Hilton</option>
                     <option value="www.hilton.com/">OHW Hilton</option>
-                    <option value="hhonors3.hilton.com/">HHonors</option>
                     <option value="hhonors3.hilton.com/">HHonors</option>
                     <option value="conradhotels3.hilton.com/">Conrad</option>
                     <option value="doubletree3.hilton.com/">DoubleTree</option>
@@ -112,6 +116,8 @@
 
         <!-- Params -->
 
+        <h3 class="title section-title">Optional fields:</h3>
+
         <section class="params-container section-container">
 
             <div class="inner-param-container" id="paramContainer"></div>
@@ -123,7 +129,9 @@
 
         <section class="results-container section-container">
 
-                <input  id="result" placeholder="https://">
+            <fieldset>
+                <textarea id="result" placeholder="https://"></textarea>
+            </fieldset>
 
             <section class="result-cta-section section-container">
                     <button id="copyText" class="btn">Copy Link</button>
@@ -133,8 +141,15 @@
          
         </section>
 
+        <h3 class="title section-title download-title">Download Deeplink guide PDF:</h3>
+        <section class="download-section section-container">
+            <a href="./pdf/deeplinking-hilton-PDFInstruction(1).pdf" download>Deeplink guide</a>
+        </section>
+        
+
     </main>
 
-    <script src="./main.js" type="module"></script>   
+    <script src="./main.js" type="module"></script>
+    <!-- <script nomodule src="./classic.js"></script>   -->
 </body>
 </html>
