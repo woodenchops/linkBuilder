@@ -1,0 +1,42 @@
+[
+    {
+        "label": "Hilton HHonors",
+        "value": "hh/"
+    },
+    {
+        "label": "Conrad Hotels & Resorts",
+        "value": "ch/"
+    },
+    {
+        "label": "Waldorf Astoria",
+        "value": "wa/"
+    },
+    {
+        "label": "Hilton Hotels & Resorts",
+        "value": "hi/"
+    },
+    {
+        "label": "DoubleTree by Hilton",
+        "value": "dt/"
+    },
+    {
+        "label": "Embassy Suites",
+        "value": "es/"
+    },
+    {
+        "label": "Hilton Garden Inn",
+        "value": "gi/"
+    },
+    {
+        "label": "Hampton Hotels",
+        "value": "hp/"
+    },
+    {
+        "label": "Homewood Suites",
+        "value": "hw/"
+    },
+    {
+        "label": "Home2 Suites by Hilton",
+        "value": "ht/"
+    }
+]

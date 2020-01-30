@@ -1,0 +1,14 @@
+[
+    {
+        "label": "Reserve",
+        "value": "reservation/book.htm/"
+    },
+    {
+        "label": "OHW Reserve",
+        "value": "book/reservation/deeplink"
+    },
+    {
+        "label": "Search",
+        "value": "search/findhotels/index.htm"
+    }
+]

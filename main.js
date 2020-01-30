@@ -1,4 +1,5 @@
 import View from './DeeplinkUI.js';
+import './helper_functions/loop.js';
 /*
 DeepLinkModel => builds the link - getters and setters
 DeeplinkUI => builds the link via a form 

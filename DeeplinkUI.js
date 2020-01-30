@@ -183,7 +183,15 @@ var View = function DeeplinkUI(props) {
         this.departure = new AddParamInput({param: 'departure', parent: paramparentContainer, label: 'Departure', view: this, type: 'date'});
         this.flexi = new AddParamInput({param: 'flexi', parent: paramparentContainer, label: 'Flexi', view: this, type: 'number', min: 'min="0"', max: 'max="1"'});
         this.mcid = new AddParamInput({param: 'mcid', parent: paramparentContainer, label: 'MCID', view: this, type: 'text'});
-
+        this.travelAgentAccount = new AddParamInput({param: 'travelAgentAccount', parent: paramparentContainer, label: 'travelAgentAccount', view: this, type: 'text'});
+        this.promo_code = new AddParamInput({param: 'promo_code', parent: paramparentContainer, label: 'promo_code', view: this, type: 'text'});
+        this.promotionCode = new AddParamInput({param: 'promotionCode', parent: paramparentContainer, label: 'promotionCode', view: this, type: 'text'});
+        this.corporateCode = new AddParamInput({param: 'corporateCode', parent: paramparentContainer, label: 'corporateCode', view: this, type: 'text'});
+        this.groupCode = new AddParamInput({param: 'groupCode', parent: paramparentContainer, label: 'groupCode', view: this, type: 'text'});
+        this.groupCodeDesc = new AddParamInput({param: 'groupCodeDesc', parent: paramparentContainer, label: 'groupCodeDesc', view: this, type: 'text'});
+        this.token = new AddParamInput({param: 'token', parent: paramparentContainer, label: 'token', view: this, type: 'text'});
+        this.offerName = new AddParamInput({param: 'offerName', parent: paramparentContainer, label: 'offerName', view: this, type: 'text'});
+        this.roomCategory = new AddParamInput({param: 'roomCategory', parent: paramparentContainer, label: 'roomCategory', view: this, type: 'text'});
         // set the standard deeplink as active on page load
         this.createStandardDeeplink();
     };
